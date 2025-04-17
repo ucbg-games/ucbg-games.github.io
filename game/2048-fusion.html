@@ -48,6 +48,28 @@
     
 
 
+<script>
+    (function () {
+        const currentHost = window.location.hostname;
+        const canonicalBase = 'https://ucbg-games.github.io';
+    
+        // Only add canonical tag if not already present
+        if (!document.querySelector("link[rel='canonical']")) {
+            const canonicalLink = document.createElement('link');
+            canonicalLink.rel = 'canonical';
+    
+            // If homepage or index.html
+            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+                canonicalLink.href = canonicalBase + '/';
+            } else {
+                canonicalLink.href = canonicalBase + window.location.pathname;
+            }
+    
+            document.head.appendChild(canonicalLink);
+        }
+    })();
+    </script>
+    
 </head>
 
 <body class="min-vh-100 layout d-flex flex-column">
@@ -832,9 +854,7 @@
 
 </div><br><br>
                     </div>
-                    <div class=" mb-3">
-    <div id="commentics"></div>
-</div>
+                     
 
                 </div>
             </div>
